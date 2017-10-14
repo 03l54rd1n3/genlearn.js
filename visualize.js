@@ -1,17 +1,20 @@
-var nn = test();
+start();
 const wSize = 500;
 var spacing = 1;
 var bounds = nn.layers.length;
 var gap = 0.5;
-
-var testLoop = true;
-var lastExecute = Date.now();
+var nn;
 
 function setup() {
     noLoop();
     ellipseMode(CENTER);
     colorMode(HSL);
     createCanvas(wSize, wSize);
+}
+
+function draw() {
+    clear();
+    background(20);
     for(let i = 0; i < nn.layers.length; i++) {
         let s = nn.layers[i];
         if(s > bounds) {
@@ -20,22 +23,6 @@ function setup() {
     }
     spacing = Math.floor(wSize / bounds);
 
-    setInterval(function() {
-        if(testLoop) {
-            let newInput = [];
-            for(let i = 0; i < nn.inputSize; i++) {
-                newInput.push(Math.random().map(0, 1, -1, 1));
-            }
-            nn.activate(newInput);
-            let t = Date.now();
-            console.log(Math.floor(1000 / (t - lastExecute)));
-            lastExecute = t;
-            draw();
-        }
-    }, 1000/10);
-}
-
-function draw() {
     let positions = [];
     for(let l = 0; l < nn.layers.length; l++) {
         positions.push([]);

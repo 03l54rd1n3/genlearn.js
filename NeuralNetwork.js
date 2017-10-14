@@ -65,18 +65,3 @@ var NeuralNetwork = function(definition, r) {
     }
     
 };
-
-function test() {
-    let layout = [3, 5, 5, 5, 2];
-    let def = [];
-    for(let i = 0; i < layout.length; i++) {
-        let ns = [];
-        for(let j = 0; j < layout[i]; j++) {
-            ns.push(ActivationFunctions.TanH);
-        }
-        def.push(ns);
-    }
-    let nn = new NeuralNetwork(def, [-3, 3]);
-    // nn.activate([0.1, -0.4, 0.9, 0.6]);
-    return nn;
-}
