@@ -1,14 +1,10 @@
 var ActivationFunctions = {
-    TanH : function(x) {
-        return Math.tanh(x);
-    },
+    TanH : Math.tanh,
     Softsign : function(x) {
         let d = 1 + Math.abs(x);
         return x / d;
     },
-    Sinusoid : function(x) {
-        return Math.sin(x);
-    },
+    Sinusoid : Math.sin,
     Binary : function(x) {
         let b = (x >= 0);
         return b ? 1 : 0;
